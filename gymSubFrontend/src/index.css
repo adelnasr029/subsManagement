@@ -1,0 +1,850 @@
+*{
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+
+}
+.signup-container{
+  max-width: 400px;
+  display: flex;
+  justify-content: center;
+}
+.form-description h2 {
+  display: flex;
+  align-items: center;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  max-width: 200px;
+}
+
+button {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1em;
+
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.error-message {
+  color: red;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+p {
+  text-align: center;
+  margin-top: 15px;
+}
+
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+
+.alert {
+  padding: 12px 16px; /* Padding inside the alert */
+  border-radius: 6px; /* Rounded corners */
+  font-size: 14px; /* Font size */
+  font-weight: 500; /* Medium font weight */
+  margin-bottom: 16px; /* Space below the alert */
+  display: flex; /* For aligning icon and text */
+  align-items: center; /* Center items vertically */
+  gap: 8px; /* Space between icon and text */
+}
+
+.alert-danger {
+  background-color: #f8d7da; /* Light red background */
+  color: #721c24; /* Dark red text */
+  border: 1px solid #f5c6cb; /* Light red border */
+}
+
+/* Optional: Add an icon to the error message */
+.alert-danger::before {
+  content: "⚠️"; /* Unicode warning icon */
+  font-size: 16px; /* Icon size */
+}
+
+/* General Styles */
+.dashboard {
+  padding: 10px;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+h2 {
+  margin-bottom: 15px;
+  font-size: 1.5em;
+}
+/* Basic reset */
+body, ul, li, a {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+}
+
+/* Header styling */
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  padding: 10px 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Logo styling */
+.logo a {
+  color: #fff;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Navigation styling */
+.main-nav ul {
+  display: flex;
+  gap: 20px;
+}
+
+.main-nav a {
+  color: #fff;
+  font-size: 16px;
+  padding: 5px 10px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.main-nav a:hover {
+  background-color: #555;
+  color: #ffcc00;
+  border-radius: 4px;
+}
+
+/* Form container Styles */
+.form-btn-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 800px; 
+  margin: 0 auto; 
+}
+
+/* Form container */
+.form-container {
+  width: 100%; 
+}
+
+/* Form Styles */
+.form-container form {
+  max-width: 500px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); 
+  gap: 12px; 
+  margin: 0 auto;
+  background-color: #f9f9f9;
+  padding: 5px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-right: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1em;
+}
+
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Container for the buttons */
+.form-btn {
+  display: flex;
+  gap: 10px; /* Space between buttons */
+  margin: 15px ; /* Space above the buttons */
+}
+
+/* Base button styles */
+.form-btn button {
+  padding: 10px 20px; /* Padding inside the buttons */
+  border: none; /* Remove default border */
+  border-radius: 5px; /* Rounded corners */
+  font-size: 16px; /* Font size */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+}
+
+/* Submit/Update button styles */
+.form-btn button[type="submit"] {
+  background-color: #4CAF50; /* Green background */
+  color: white; /* White text */
+}
+
+.form-btn button[type="submit"]:hover {
+  background-color: #45a049; /* Darker green on hover */
+  transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+/* Cancel button styles */
+.form-btn button[type="button"] {
+  background-color: #f44336; /* Red background */
+  color: white; /* White text */
+}
+
+.form-btn button[type="button"]:hover {
+  background-color: #d32f2f; /* Darker red on hover */
+  transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+/* Container for the search section */
+.search-container {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  max-width: 300px;
+  justify-content: center;
+}
+
+/* Search input field */
+.search-container input[type="text"] {
+  width: 90%;
+  padding: 10px 15px;
+  font-size: 1rem;
+  border: 2px solid #ddd;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Focus effect for the search input */
+.search-container input[type="text"]:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+}
+
+/* Placeholder text style */
+.search-container input[type="text"]::placeholder {
+  color: #999;
+  font-style: italic;
+}
+
+/* Table Styles */
+.table-container {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  white-space: nowrap;
+}
+
+table thead tr{
+  color: white;
+}
+
+tr td {
+  font-weight: bold;
+}
+th {
+  background-color: #007bff;
+  width: 100%;
+}
+
+tr:hover {
+  background-color: #f1f1f1;
+}
+
+.status {
+  padding: 5px 10px;
+  border-radius: 12px;
+  font-size: 0.9em;
+  font-weight: bold;
+}
+
+.status.active {
+  background-color: #4caf50; /* Green for active */
+  color: white;
+}
+
+.status.expired {
+  background-color: #f44336; /* Red for expired */
+  color: white;
+}
+.status.upcoming {
+  background-color: #ff9800; /* Orange for upcoming */
+  color: white;
+}
+
+.edit-button {
+  background-color: #ffc107;
+  color: black;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.edit-button:hover {
+  background-color: #e0a800;
+}
+
+
+/* Logout.css */
+.logout-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  z-index: 1000;
+  width: 300px;
+}
+
+.logout-popup h2 {
+  margin-bottom: 20px;
+  font-size: 18px;
+  color: #333;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.logout-popup button {
+  flex: 1;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.logout-popup button.logout {
+  background-color: #ff4d4d;
+  color: white;
+}
+
+.logout-popup button.logout:hover {
+  background-color: #ff1a1a;
+}
+
+.logout-popup button.cancel {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.logout-popup button.cancel:hover {
+  background-color: #ddd;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+/* SubscriberDetails.css */
+.subscriber-details {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  text-align: center;
+}
+
+.subscriber-details h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #333;
+}
+.subscriber-info {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Two equal columns */
+  gap: 16px; /* Space between items */
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px; /* Space between dt and dd */
+}
+
+.subscriber-details p {
+  font-size: 16px;
+  margin: 8px 0;
+  color: #555;
+}
+
+.subscriber-details img {
+  width: 100%;
+  max-width: 200px;
+  border-radius: 10px;
+  margin: 10px 0;
+}
+
+.subscriber-details form {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.subscriber-details label {
+  font-size: 14px;
+  color: #333;
+}
+
+.subscriber-details input[type="date"] {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.subscriber-details button {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.subscriber-details button:hover {
+  background-color: #0056b3;
+}
+
+.loading,
+.error {
+  text-align: center;
+  font-size: 18px;
+  color: #333;
+  margin-top: 20px;
+}
+.subscriber-image img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%; /* Circular image */
+  object-fit: cover; /* Ensures the image covers the area without distortion */
+  border: 3px solid #007bff; /* Border around the image */
+}
+
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.tooltip img {
+  max-width: 100px;
+  max-height: 100px;
+  display: block;
+}
+
+
+/* Container for subscriber details */
+.subscriber-details {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  max-width: 400px;
+  margin: 20px auto;
+  position: relative;
+}
+
+/* Subscriber name */
+.subscriber-details h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #333333;
+}
+
+/* Delete button */
+/* Delete button */
+.delete-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: #ff4d4d; /* Red background */
+  color: white; /* White icon */
+  border: none;
+  border-radius: 4px; /* Slightly rounded corners */
+  width: 40px; /* Fixed width */
+  height: 40px; /* Fixed height */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+.delete-button:hover {
+  background-color: #ff1a1a; /* Darker red on hover */
+}
+
+/* Trash icon */
+.delete-button i {
+  font-size: 18px; /* Adjust icon size */
+}
+
+/* Subscriber image */
+.subscriber-image {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.subscriber-image img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #cccccc;
+}
+
+/* Subscriber details paragraphs */
+.subscriber-details p {
+  font-size: 14px;
+  color: #555555;
+  margin: 5px 0;
+}
+
+/* Renew subscription form */
+.subscriber-details form {
+  margin-top: 20px;
+}
+
+.subscriber-details form label {
+  display: block;
+  font-size: 14px;
+  color: #333333;
+  margin-bottom: 5px;
+}
+
+.subscriber-details form input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.subscriber-details form button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  width: 100%;
+}
+
+.subscriber-details form button:hover {
+  background-color: #45a049;
+}
+
+/* Confirmation modal */
+.confirmation-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.confirmation-modal-content {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  max-width: 300px;
+}
+
+.confirmation-modal-content p {
+  font-size: 16px;
+  margin-bottom: 20px;
+  color: #333333;
+}
+
+.confirmation-modal-content button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  margin: 0 10px;
+}
+
+.confirmation-modal-content .confirm {
+  background-color: #ff4d4d;
+  color: white;
+}
+
+.confirmation-modal-content .confirm:hover {
+  background-color: #ff1a1a;
+}
+
+.confirmation-modal-content .cancel {
+  background-color: #cccccc;
+  color: #333333;
+}
+
+.confirmation-modal-content .cancel:hover {
+  background-color: #bbbbbb;
+}
+
+/* Each label-value pair */
+.info-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Label (dt) */
+.info-item dt {
+  font-weight: bold;
+  width: 100px; /* Fixed width for labels */
+  margin-right: 10px;
+}
+
+/* Value (dd) */
+.info-item dd {
+  margin: 0;
+  flex: 1; /* Takes remaining space */
+}
+
+/* Highlight specific statuses */
+.info-item dd[data-status="active"] {
+  color: #4caf50; /* Green for active status */
+}
+
+.info-item dd[data-status="inactive"] {
+  color: #ff4d4d; /* Red for inactive status */
+}
+
+
+/* Form container */
+
+/* Labels */
+form label {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 5px;
+}
+
+/* Input fields */
+form input[type="date"],
+form input[type="number"] {
+  width: 90%;
+  padding: 10px;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #555555;
+  background-color: #ffffff;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Focus state for input fields */
+form input[type="date"]:focus,
+form input[type="number"]:focus {
+  border-color: #4caf50; /* Green border on focus */
+  outline: none;
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5); /* Subtle glow effect */
+}
+
+/* Submit button */
+form button[type="submit"] {
+  background-color: #4caf50; /* Green background */
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Hover state for submit button */
+form button[type="submit"]:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
+
+/* Disabled state for submit button */
+form button[type="submit"]:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.full-screen-div {
+  height: 100vh; /* Full viewport height */
+  width: 100vw; /* Full viewport width */
+  overflow: hidden; /* Prevent scrolling */
+  box-sizing: border-box; /* Include padding and border in dimensions */
+  padding: 20px; /* Optional: Add padding */
+  background-color: #f0f0f0; /* Optional: Background color */
+  display: flex; /* Optional: Center content */
+  justify-content: center; /* Optional: Center horizontally */
+  align-items: center; /* Optional: Center vertically */
+}
+
+.renewal-input{
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+.renewal-input label{
+  min-width: 120px; 
+  margin-right: 10px; 
+  text-align: left; 
+  white-space: nowrap;
+}
+.renewal-input input {
+  padding: 5px;
+  flex: 1; /* Allow input to take up remaining space */
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Base styles for the table container */
+.table-container {
+  width: 100%;
+  max-width: 1200px; /* Adjust as needed */
+  margin: 0 auto; /* Center the container */
+  padding: 20px;
+}
+
+/* Styles for the header and search container */
+.table-container h2 {
+  margin: 0; /* Remove default margin */
+}
+
+.search-container {
+  display: flex;
+  align-items: center; /* Vertically center the search input */
+}
+
+/* Flexbox layout for the heading and search container */
+.table-header {
+  display: flex;
+  align-items: center; /* Vertically center the heading and search */
+  justify-content: flex-start; /* Space out the heading and search */
+  margin-bottom: 20px; /* Add spacing below the header */
+  gap: 20px;
+}
+
+/* Styles for the search input */
+.search-container input {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Optional: Add responsive behavior */
+@media (max-width: 768px) {
+  .table-header {
+    flex-direction: column; /* Stack heading and search vertically on mobile */
+    align-items: flex-start; /* Align items to the start */
+  }
+
+  .search-container {
+    width: 100%; /* Full width on mobile */
+  }
+
+  .search-container input {
+    width: 100%; /* Full width on mobile */
+  }
+}
