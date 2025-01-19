@@ -316,16 +316,16 @@ tr:hover {
   font-weight: bold;
 }
 
-.status.active {
+.status.Active {
   background-color: #4caf50; /* Green for active */
   color: white;
 }
 
-.status.expired {
+.status.Expired {
   background-color: #f44336; /* Red for expired */
   color: white;
 }
-.status.upcoming {
+.status.Upcoming {
   background-color: #ff9800; /* Orange for upcoming */
   color: white;
 }
@@ -542,7 +542,6 @@ tr:hover {
 }
 
 /* Delete button */
-/* Delete button */
 .delete-button {
   position: absolute;
   top: 20px;
@@ -566,10 +565,42 @@ tr:hover {
 }
 
 /* Trash icon */
+button.delete-button {
+  background: #95A0A6;
+}
+button.delete-button:hover {
+  background: #ff1a1a;
+}
 .delete-button i {
-  font-size: 18px; /* Adjust icon size */
+  font-size: 18px; 
 }
 
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.back-button, .delete-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+button.back-button {
+  background: none; 
+  border: none; 
+  padding: 0; 
+  cursor: pointer; 
+  font-size: 1.8rem; 
+  color: #95A0A6
+  ; 
+  width: 2rem;
+}
+
+button.back-button:hover {
+  color: #007bff; /* Change icon color on hover (blue by default) */
+  background: none;
+}
 /* Subscriber image */
 .subscriber-image {
   text-align: center;
@@ -848,3 +879,4 @@ form button[type="submit"]:disabled {
     width: 100%; /* Full width on mobile */
   }
 }
+

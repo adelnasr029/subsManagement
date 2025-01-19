@@ -69,7 +69,7 @@ const SubscriberDetails = () => {
   }, [id]); 
 
   // Handle subscription renewal
-  const handleRenew = async (newStartDate, newEndDate) => {
+ const handleRenew = async (newStartDate, newEndDate) => {
     try {
       const response = await fetch(`http://localhost:5174/subscriber/${id}/renew`, {
         method: "PUT",
@@ -108,13 +108,17 @@ const SubscriberDetails = () => {
 
   return (
     <div className="subscriber-details">
+          <div className="header">
+              <button onClick={() => navigate("/home")} className="back-button">
+              <i className="fas fa-arrow-left"></i> 
+              </button>
+              <button onClick={() => setShowConfirmation(true)} className="delete-button">
+              <i className="fas fa-trash"></i>
+              </button>
+          </div>
           <h2>
-            {subscriber.firstName} {subscriber.lastName}
-          </h2>
-          {/* Delete Button */}
-          <button onClick={() => setShowConfirmation(true)} className="delete-button">
-          <i className="fas fa-trash"></i>
-          </button>
+                {subscriber.firstName} {subscriber.lastName}
+              </h2>
           {subscriber.image && (
             <div className="subscriber-image">
               <img src={subscriber.image} alt={`${subscriber.firstName} ${subscriber.lastName}`} />
@@ -152,7 +156,7 @@ const SubscriberDetails = () => {
               <dt>Amount</dt>
               <dd>{subscriber.amount}</dd>
             </div>
-            <div  className={`status ${subscriber.status.toLowerCase()} info-item`}>
+            <div  className={`status ${subscriber.status} info-item`}>
               <dt >Status</dt>
               <dd>{subscriber.status}</dd>
             </div>

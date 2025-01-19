@@ -9,12 +9,10 @@ import Dashboard from "./components/subscriptions/Home"
 import ProtectedRoute from "./components/auth/ProtectedRoute"
 import SubscriberDetails from "./components/subscriptions/SubscriberDetails";
 import Layout from './components/Layout'
-import SubscripersList from "./components/subscriptions/SubscripersList";
 
 
 export default function App() {
   return (
-    <>
       <AuthProvider>
         <Router>
           <Routes>
@@ -45,16 +43,6 @@ export default function App() {
                     <Signup />
                   </ProtectedRoute>
                 }/>
-                <Route
-                path="/subscripers-list"
-                element={
-                <ProtectedRoute>
-                  <Layout>
-                    <SubscripersList />
-                  </Layout>
-                </ProtectedRoute>
-                }
-              />
               <Route
                 path="/logout"
                 element={
@@ -69,7 +57,6 @@ export default function App() {
           </Routes>
         </Router>
       </AuthProvider>
-    </>
   )
 }
 

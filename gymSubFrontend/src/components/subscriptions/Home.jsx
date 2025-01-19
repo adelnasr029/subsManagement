@@ -3,9 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import ImageTooltip from "./ImageTooltip";
 
 const Dashboard = () => {
-
   const navigate = useNavigate();
-
   const [subscribers, setSubscribers] = useState([]);
   const [query, setQuery] = useState(""); // State for search query
 
@@ -23,30 +21,37 @@ const Dashboard = () => {
   const [error, setError] = useState(null);
   const [isEditMode, setIsEditMode] = useState(false); // Track edit mode
   const [currentSubscriberId, setCurrentSubscriberId] = useState(null); // Track the ID of the subscriber being edited
-
-    // Function to calculate remaining days
-    const calculateRemainingDays = ( endDate) => {
-      const start = Date.now();
-      const end = new Date(endDate);
-      const differenceInMs = end - start;
-      const differenceInDays = Math.floor(differenceInMs / (1000 * 60 * 60 * 24));
-      return differenceInDays >= 0 ? differenceInDays : 0;
-    };
-
-      // Function to determine subscription status
-  const getSubscriptionStatus = (startDate, remainingDays) => {
-    const currentDate = new Date();
-    const start = new Date(startDate);
-
-    if (currentDate < start) {
-      return "Upcoming"; 
-    } else if (remainingDays > 0) {
-      return "Active"; 
-    } else {
-      return "Expired"; 
-    }
-  };
   
+        // Function to calculate remaining days
+        const calculateRemainingDays = ( endDate) => {
+          const start = Date.now();
+          const end = new Date(endDate);
+            // Check if endDate is valid
+          if (isNaN(end)) {
+            throw new Error("Invalid endDate");
+          }
+          const differenceInMs = end - start;
+          const differenceInDays = Math.ceil(differenceInMs / (1000 * 60 * 60 * 24));
+          return differenceInDays >= 0 ? differenceInDays : 0;
+        };
+    
+      // Function to determine subscription status
+      const getSubscriptionStatus = (startDate, remainingDays) => {
+        const currentDate = new Date();
+        const start = new Date(startDate);
+            // Check if startDate is valid
+          if (isNaN(start)) {
+          throw new Error("Invalid startDate");
+        }
+        if (currentDate < start) {
+          return "Upcoming"; 
+        } else if (remainingDays > 0) {
+          return "Active"; 
+        } else {
+          return "Expired"; 
+        }
+      };
+
   useEffect(() => {
     const fetchSubscribers = () => {
       fetch(`http://localhost:5174/home`, {
@@ -76,20 +81,18 @@ const Dashboard = () => {
               status,
             };
           });
-  
           setSubscribers(subscribersWithDetails);
         })
         .catch((error) => {
           console.error("Error fetching subscribers:", error);
         });
     };
-  
     fetchSubscribers();
-  }, [formData]);
+  }, []);
 
   // Handle search input change
   const handleSearch = (e) => {
-      setQuery(e.target.value);
+    setQuery(e.target.value);
   };
     // Filter subscribers based on the search query (ID or name)
     const handleEdit = (id) => {
@@ -105,12 +108,11 @@ const Dashboard = () => {
           image: subscriberToEdit.image, 
         });
       }
-      
       setIsEditMode(true); 
       setCurrentSubscriberId(id);
     };
 
-    const filteredSubscribers =
+  const filteredSubscribers =
       query.trim() === ""
       ? subscribers 
       : subscribers.filter((subscriber) => {
@@ -121,7 +123,7 @@ const Dashboard = () => {
             subscriber.lastName.toLowerCase().includes(query.toLowerCase()) || 
             fullName.includes(query.toLowerCase()) 
           );
-        });
+      });
     
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -138,12 +140,9 @@ const Dashboard = () => {
   };
 
   const handleUpdate = async () => {
-    
-    if (!currentSubscriberId) return; console.log('testing')
-
+    if (!currentSubscriberId) return; 
     setIsLoading(true);
     setError(null);
-
     try {
       const formDataToSend = new FormData();
       formDataToSend.append("firstName", formData.firstName);
@@ -155,19 +154,24 @@ const Dashboard = () => {
       if (formData.image) {
         formDataToSend.append("image", formData.image);
       }
-
       const response = await fetch(`http://localhost:5174/post/updateSubscriber/${currentSubscriberId}`, {
         method: "PUT",
         body: formDataToSend,
       });
-
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
-
       const updatedSubscriber = await response.json();
-      setSubscribers(subscribers.map(sub => sub._id === currentSubscriberId ? updatedSubscriber : sub));
-
+      // Calculate remaining days and subscription status
+      const remainingDays = calculateRemainingDays(updatedSubscriber.endDate);
+      const subscriptionStatus = getSubscriptionStatus(
+      updatedSubscriber.startDate,
+      remainingDays
+      );
+      // Add the status to the updated subscriber object
+      updatedSubscriber.status = subscriptionStatus;
+      updatedSubscriber.daysRemaining = remainingDays;
+      setSubscribers(subscribers.map(sub => sub._id === currentSubscriberId ? { ...sub, ...updatedSubscriber } : sub));
       // Reset form and edit mode
       setFormData({
         firstName: "",
@@ -180,7 +184,6 @@ const Dashboard = () => {
       });
       setIsEditMode(false);
       setCurrentSubscriberId(null);
-
     } catch (error) {
       console.error("Error:", error);
       setError("Failed to update the subscriber. Please try again.");
@@ -220,10 +223,6 @@ const Dashboard = () => {
     }
     setIsLoading(true); 
     setError(null); 
-  
-    // Basic validation
-
-  
     try {
       const formDataToSend = new FormData();
       formDataToSend.append("firstName", formData.firstName);
@@ -414,7 +413,7 @@ const Dashboard = () => {
                   })}
                 </td>
                 <td>
-                  <span className={`status ${subscriber.status.toLowerCase()}`}>
+                  <span className={`status ${subscriber.status}`}>
                     {subscriber.status}
                   </span>
                 </td>

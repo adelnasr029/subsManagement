@@ -1,6 +1,5 @@
 const cloudinary = require("../middleware/cloudinary");
 const Subscriber = require("../models/Subscriber");
-const User = require("../models/User")
 const mongoose = require('mongoose')
 
 module.exports = {
@@ -19,15 +18,11 @@ module.exports = {
       if (!mongoose.Types.ObjectId.isValid(subscriberId)) {
         return res.status(400).json({ error: "Invalid subscriber ID" });
       }
-  
-      // Find the subscriber in the database
       const subscriber = await Subscriber.findById(subscriberId).lean();
   
-      // If subscriber not found, return a 404 error
       if (!subscriber) {
         return res.status(404).json({ error: "Subscriber not found" });
       }
-      // Send the subscriber data as a JSON response
       res.status(200).json(subscriber);
     }catch (err) {
       console.log(err);
@@ -64,10 +59,7 @@ module.exports = {
         cloudinaryId: cloudinaryId,
         user: req.user,
       });
-      // console.log(result)
       console.log("Subscriper has been added!");
-      console.log(req.body); // Non-file fields
-      console.log(req.file); // Uploaded file
       res.send("File uploaded successfully");
         } catch (err) {
       console.log(err);
@@ -77,16 +69,14 @@ module.exports = {
     const subscriberId = req.params.id;
     const { firstName, lastName, phone, startDate, endDate, amount } = req.body;
     const image = req.file ? req.file.path : null;
-  
     try {
       console.log('Request File:', req.file);
-      console.log('Request Body:', req.body);      // Find the subscriber by ID
+      console.log('Request Body:', req.body);
       const subscriber = await Subscriber.findById(subscriberId);
       if (!subscriber) {
         return res.status(404).json({ error: 'Subscriber not found' });
       }
   
-      // Prepare the update data
       const updateData = {
         firstName,
         lastName,
@@ -98,7 +88,6 @@ module.exports = {
   
       // If a new image is uploaded
       if (image) {
-        // Upload the new image to Cloudinary
         const result = await cloudinary.uploader.upload(image, {
           folder: 'subscribers', // Optional: Organize images in a folder
         });
@@ -116,14 +105,11 @@ module.exports = {
         updateData.image = subscriber.image;
         updateData.cloudinaryId = subscriber.cloudinaryId;
       }
-  
-      // Find and update the subscriber
-      const updatedSubscriber = await Subscriber.findByIdAndUpdate(
+        const updatedSubscriber = await Subscriber.findByIdAndUpdate(
         subscriberId,
         updateData,
-        { new: true, upsert: false } //ensures no new document is created
+        { new: true, upsert: false } 
       );
-  
       res.status(200).json(updatedSubscriber);
     } catch (error) {
       console.error('Error updating subscriber:', error);
@@ -133,9 +119,8 @@ module.exports = {
   deleteSubscriber: async (req, res) => {
     try {
       const subscriber = await Subscriber.findById({ _id: req.params.id });
-      // Delete image from cloudinary
       if(subscriber.cloudinaryId){
-         await cloudinary.uploader.destroy(subscriber.cloudinaryId);
+        await cloudinary.uploader.destroy(subscriber.cloudinaryId);
       }
       // Delete subscriber from db
       await Subscriber.remove({ _id: req.params.id });
