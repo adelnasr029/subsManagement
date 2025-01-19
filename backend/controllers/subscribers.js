@@ -5,7 +5,6 @@ const mongoose = require('mongoose')
 module.exports = {
   getUser: async (req, res) => {
     try {
-      console.log(req.user)
       res.status(200).json({ username: req.user?.username});
     } catch (err) {
       console.log(err);
@@ -70,8 +69,6 @@ module.exports = {
     const { firstName, lastName, phone, startDate, endDate, amount } = req.body;
     const image = req.file ? req.file.path : null;
     try {
-      console.log('Request File:', req.file);
-      console.log('Request Body:', req.body);
       const subscriber = await Subscriber.findById(subscriberId);
       if (!subscriber) {
         return res.status(404).json({ error: 'Subscriber not found' });
