@@ -38,13 +38,13 @@ const Logout = () => {
       <div className="overlay"></div>
 
       {/* Popup */}
-      <div className="logout-popup">
+      <div className="confirmation-modal">
         <h2>Are you sure you want to log out?</h2>
         <div className="button-container">
           <button className="cancel" onClick={handleCancel}>
             Cancel
           </button>
-          <button className="logout" onClick={handleLogout}>
+          <button className="confirm" onClick={handleLogout}>
             Logout
           </button>
         </div>

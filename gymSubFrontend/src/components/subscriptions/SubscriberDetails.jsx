@@ -76,6 +76,7 @@ const SubscriberDetails = () => {
         headers: {
           "Content-Type": "application/json",
         },
+        credentials: "include",
         body: JSON.stringify({ startDate: newStartDate, endDate: newEndDate }),
       });
       if (!response.ok) {
@@ -93,6 +94,7 @@ const SubscriberDetails = () => {
     try {
       const response = await fetch(`http://localhost:5174/post/deleteSubscriper/${id}`, {
         method: "DELETE",
+        credentials: "include",
       });
       if (!response.ok) {
         throw new Error("Failed to delete subscriber");
@@ -193,13 +195,13 @@ const SubscriberDetails = () => {
           {/* Confirmation Modal */}
           {showConfirmation && (
             <div className="confirmation-modal">
-              <div className="confirmation-modal-content">
-                <p>Are you sure you want to delete this subscriber?</p>
+              <p>Are you sure you want to delete this subscriber?</p>
+              <div className="button-container">
+              <button className="cancel" onClick={() => setShowConfirmation(false)}>
+                  Cancel
+                </button>
                 <button className="confirm" onClick={handleDelete}>
                   Yes, Delete
-                </button>
-                <button className="cancel" onClick={() => setShowConfirmation(false)}>
-                  Cancel
                 </button>
               </div>
             </div>

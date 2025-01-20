@@ -1,21 +1,64 @@
 *{
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-
 }
+
+/* Header styling */
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  padding: 10px 100px;
+  position: sticky;
+  top: 0;
+  z-index: 10000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .signup-container{
   max-width: 400px;
   display: flex;
   justify-content: center;
 }
+/* Form container Styles */
+.form-btn-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 800px; 
+  margin: 0 auto; 
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow-x: auto;
+  padding: 20px;
+  margin-bottom: 40px;
+}
+/* Form Styles */
+.form-container form {
+  max-width: 500px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); 
+  gap: 12px; 
+  margin: 0 auto;
+}
 .form-description h2 {
   display: flex;
   align-items: center;
+  margin: 40px;
 }
 
 .form-group {
+  display: flex;
+  flex-direction: column;
+  margin-right: 15px;
   margin-bottom: 15px;
 }
-
 .form-group label {
   display: block;
   margin-bottom: 5px;
@@ -40,7 +83,6 @@ button {
   border-radius: 4px;
   cursor: pointer;
   font-size: 1em;
-
 }
 
 button:disabled {
@@ -58,26 +100,32 @@ p {
   text-align: center;
   margin-top: 15px;
 }
-
+/* Logo styling */
+.logo a {
+  color: #fff;
+  font-size: 24px;
+  font-weight: bold;
+}
 a {
   color: #007bff;
   text-decoration: none;
 }
 
-a:hover {
-  text-decoration: underline;
+.logo a:hover {
+  background-color: #555;
+  color: #ffcc00;
+  border-radius: 4px;
 }
 
-
 .alert {
-  padding: 12px 16px; /* Padding inside the alert */
-  border-radius: 6px; /* Rounded corners */
-  font-size: 14px; /* Font size */
-  font-weight: 500; /* Medium font weight */
-  margin-bottom: 16px; /* Space below the alert */
-  display: flex; /* For aligning icon and text */
-  align-items: center; /* Center items vertically */
-  gap: 8px; /* Space between icon and text */
+  padding: 12px 16px; 
+  border-radius: 6px; 
+  font-size: 14px; 
+  font-weight: 500;
+  margin-bottom: 16px; 
+  display: flex; 
+  align-items: center; 
+  gap: 8px; 
 }
 
 .alert-danger {
@@ -96,6 +144,10 @@ a:hover {
 .dashboard {
   padding: 10px;
   font-family: Arial, sans-serif;
+  display: flex;
+  gap: 16px;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 h1 {
@@ -113,23 +165,6 @@ body, ul, li, a {
   padding: 0;
   list-style: none;
   text-decoration: none;
-}
-
-/* Header styling */
-.main-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #333;
-  padding: 10px 20px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-/* Logo styling */
-.logo a {
-  color: #fff;
-  font-size: 24px;
-  font-weight: bold;
 }
 
 /* Navigation styling */
@@ -150,54 +185,6 @@ body, ul, li, a {
   color: #ffcc00;
   border-radius: 4px;
 }
-
-/* Form container Styles */
-.form-btn-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: 800px; 
-  margin: 0 auto; 
-}
-
-/* Form container */
-.form-container {
-  width: 100%; 
-}
-
-/* Form Styles */
-.form-container form {
-  max-width: 500px;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); 
-  gap: 12px; 
-  margin: 0 auto;
-  background-color: #f9f9f9;
-  padding: 5px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-  margin-right: 15px;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-}
-
-.form-group input {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 1em;
-}
-
 
 button:hover {
   background-color: #0056b3;
@@ -242,6 +229,32 @@ button:hover {
   transform: scale(1.05); /* Slightly enlarge on hover */
 }
 
+/* Table Styles */
+.table-container {
+  width: max-content;
+  max-width: 1200px; 
+  margin: 0 auto; 
+  padding: 20px;
+}
+
+.table-container h2 {
+  margin: 0; /* Remove default margin */
+}
+
+.search-container {
+  display: flex;
+  align-items: center; 
+}
+
+.table-header {
+  display: flex;
+  align-items: center; /* Vertically center the heading and search */
+  justify-content: flex-start; /* Space out the heading and search */
+  margin-bottom: 20px; /* Add spacing below the header */
+  gap: 20px;
+}
+
+/* Styles for the search input */
 /* Container for the search section */
 .search-container {
   background-color: #f9f9f9;
@@ -256,6 +269,7 @@ button:hover {
   padding: 10px 15px;
   font-size: 1rem;
   border: 2px solid #ddd;
+  border-radius: 20px;
   outline: none;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
@@ -271,8 +285,6 @@ button:hover {
   color: #999;
   font-style: italic;
 }
-
-/* Table Styles */
 .table-container {
   background-color: #f9f9f9;
   border-radius: 8px;
@@ -283,8 +295,8 @@ button:hover {
 table {
   width: 100%;
   border-collapse: collapse;
+  width: max-content;  /* Dynamically adjust width based on content */
 }
-
 th,
 td {
   padding: 12px;
@@ -308,25 +320,25 @@ th {
 tr:hover {
   background-color: #f1f1f1;
 }
-
+/* Make the status column width dynamic */
 .status {
   padding: 5px 10px;
-  border-radius: 12px;
+  border-radius: 5px;
   font-size: 0.9em;
   font-weight: bold;
 }
 
 .status.Active {
-  background-color: #4caf50; /* Green for active */
+  background-color: #4caf50;
   color: white;
 }
 
 .status.Expired {
-  background-color: #f44336; /* Red for expired */
+  background-color: #f44336; 
   color: white;
 }
 .status.Upcoming {
-  background-color: #ff9800; /* Orange for upcoming */
+  background-color: #ff9800; 
   color: white;
 }
 
@@ -344,8 +356,8 @@ tr:hover {
 }
 
 
-/* Logout.css */
-.logout-popup {
+/* Confirmation modal */
+.confirmation-modal {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -359,7 +371,7 @@ tr:hover {
   width: 300px;
 }
 
-.logout-popup h2 {
+.confirmation-modal p {
   margin-bottom: 20px;
   font-size: 18px;
   color: #333;
@@ -371,7 +383,7 @@ tr:hover {
   gap: 10px;
 }
 
-.logout-popup button {
+.confirmation-modal button {
   flex: 1;
   border: none;
   padding: 10px 20px;
@@ -381,22 +393,22 @@ tr:hover {
   transition: background-color 0.3s ease;
 }
 
-.logout-popup button.logout {
-  background-color: #ff4d4d;
+.confirmation-modal button.confirm {
+  background-color: #fc6767;
   color: white;
 }
 
-.logout-popup button.logout:hover {
-  background-color: #ff1a1a;
+.confirmation-modal button.confirm:hover {
+  background-color: #fa0101;
 }
 
-.logout-popup button.cancel {
-  background-color: #f0f0f0;
-  color: #333;
+.confirmation-modal button.cancel {
+  background-color: #cccccc;
+  color: #333333;
 }
 
-.logout-popup button.cancel:hover {
-  background-color: #ddd;
+.confirmation-modal button.cancel:hover {
+  background-color: #bbbbbb;
 }
 
 .overlay {
@@ -421,11 +433,6 @@ tr:hover {
   text-align: center;
 }
 
-.subscriber-details h2 {
-  font-size: 24px;
-  margin-bottom: 10px;
-  color: #333;
-}
 .subscriber-info {
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* Two equal columns */
@@ -439,19 +446,19 @@ tr:hover {
 }
 
 .subscriber-details p {
-  font-size: 16px;
+  font-size: 20px;
   margin: 8px 0;
   color: #555;
 }
 
-.subscriber-details img {
+.subscriber-details img{
   width: 100%;
   max-width: 200px;
   border-radius: 10px;
   margin: 10px 0;
 }
 
-.subscriber-details form {
+.subscriber-details form{
   margin-top: 20px;
   display: flex;
   flex-direction: column;
@@ -467,21 +474,6 @@ tr:hover {
   border: 1px solid #ddd;
   border-radius: 5px;
   font-size: 14px;
-}
-
-.subscriber-details button {
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  background-color: #007bff;
-  color: #fff;
-  font-size: 14px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.subscriber-details button:hover {
-  background-color: #0056b3;
 }
 
 .loading,
@@ -534,71 +526,46 @@ tr:hover {
   position: relative;
 }
 
-/* Subscriber name */
-.subscriber-details h2 {
-  font-size: 24px;
-  margin-bottom: 10px;
-  color: #333333;
-}
-
 /* Delete button */
 .delete-button {
   position: absolute;
   top: 20px;
   right: 20px;
-  background-color: #ff4d4d; /* Red background */
-  color: white; /* White icon */
+  font-size: 1.8rem; 
   border: none;
-  border-radius: 4px; /* Slightly rounded corners */
-  width: 40px; /* Fixed width */
-  height: 40px; /* Fixed height */
-  cursor: pointer;
+  border-radius: 4px; 
+  width: 40px; 
+  height: 40px;
   display: flex;
+  background-color: white;
   align-items: center;
   justify-content: center;
-  font-size: 16px;
   transition: background-color 0.3s ease; /* Smooth hover effect */
 }
-
-.delete-button:hover {
-  background-color: #ff1a1a; /* Darker red on hover */
+.delete-button:hover{
+  background-color: white;
 }
-
 /* Trash icon */
-button.delete-button {
-  background: #95A0A6;
+button.delete-button i {
+  color: #95A0A6;
 }
-button.delete-button:hover {
-  background: #ff1a1a;
-}
-.delete-button i {
-  font-size: 18px; 
+button.delete-button i:hover {
+  color: #ff1a1a;
 }
 
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.back-button, .delete-button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 1.2rem;
-}
+
 button.back-button {
   background: none; 
   border: none; 
   padding: 0; 
   cursor: pointer; 
   font-size: 1.8rem; 
-  color: #95A0A6
-  ; 
+  color: #95A0A6; 
   width: 2rem;
 }
 
 button.back-button:hover {
-  color: #007bff; /* Change icon color on hover (blue by default) */
+  color: #007bff; 
   background: none;
 }
 /* Subscriber image */
@@ -616,8 +583,8 @@ button.back-button:hover {
 }
 
 /* Subscriber details paragraphs */
-.subscriber-details p {
-  font-size: 14px;
+.subscriber-details p{
+  font-size: 16px;
   color: #555555;
   margin: 5px 0;
 }
@@ -658,60 +625,6 @@ button.back-button:hover {
   background-color: #45a049;
 }
 
-/* Confirmation modal */
-.confirmation-modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.confirmation-modal-content {
-  background-color: #ffffff;
-  padding: 20px;
-  border-radius: 8px;
-  text-align: center;
-  max-width: 300px;
-}
-
-.confirmation-modal-content p {
-  font-size: 16px;
-  margin-bottom: 20px;
-  color: #333333;
-}
-
-.confirmation-modal-content button {
-  padding: 10px 15px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 14px;
-  margin: 0 10px;
-}
-
-.confirmation-modal-content .confirm {
-  background-color: #ff4d4d;
-  color: white;
-}
-
-.confirmation-modal-content .confirm:hover {
-  background-color: #ff1a1a;
-}
-
-.confirmation-modal-content .cancel {
-  background-color: #cccccc;
-  color: #333333;
-}
-
-.confirmation-modal-content .cancel:hover {
-  background-color: #bbbbbb;
-}
-
 /* Each label-value pair */
 .info-item {
   display: flex;
@@ -743,9 +656,6 @@ button.back-button:hover {
 .info-item dd[data-status="inactive"] {
   color: #ff4d4d; /* Red for inactive status */
 }
-
-
-/* Form container */
 
 /* Labels */
 form label {
@@ -811,7 +721,6 @@ form button[type="submit"]:disabled {
   justify-content: center; /* Optional: Center horizontally */
   align-items: center; /* Optional: Center vertically */
 }
-
 .renewal-input{
   display: flex;
   gap: 5px;
@@ -831,46 +740,12 @@ form button[type="submit"]:disabled {
   border-radius: 4px;
 }
 
-/* Base styles for the table container */
-.table-container {
-  width: 100%;
-  max-width: 1200px; /* Adjust as needed */
-  margin: 0 auto; /* Center the container */
-  padding: 20px;
-}
-
-/* Styles for the header and search container */
-.table-container h2 {
-  margin: 0; /* Remove default margin */
-}
-
-.search-container {
-  display: flex;
-  align-items: center; /* Vertically center the search input */
-}
-
-/* Flexbox layout for the heading and search container */
-.table-header {
-  display: flex;
-  align-items: center; /* Vertically center the heading and search */
-  justify-content: flex-start; /* Space out the heading and search */
-  margin-bottom: 20px; /* Add spacing below the header */
-  gap: 20px;
-}
-
-/* Styles for the search input */
-.search-container input {
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-/* Optional: Add responsive behavior */
+/*responsive behavior */
 @media (max-width: 768px) {
   .table-header {
-    flex-direction: column; /* Stack heading and search vertically on mobile */
-    align-items: flex-start; /* Align items to the start */
+    flex-direction: column; 
+    align-items: flex-start; 
   }
-
   .search-container {
     width: 100%; /* Full width on mobile */
   }
@@ -879,4 +754,8 @@ form button[type="submit"]:disabled {
     width: 100%; /* Full width on mobile */
   }
 }
-
+@media (max-width: 900px){
+  .dashboard{
+    display: block;
+  }
+}

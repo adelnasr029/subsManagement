@@ -19,8 +19,9 @@ const Dashboard = () => {
   
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [isEditMode, setIsEditMode] = useState(false); // Track edit mode
-  const [currentSubscriberId, setCurrentSubscriberId] = useState(null); // Track the ID of the subscriber being edited
+  const [isEditMode, setIsEditMode] = useState(false);
+  const [currentSubscriberId, setCurrentSubscriberId] = useState(null);
+  const [refreshData, setRefreshData] = useState(false);
   
         // Function to calculate remaining days
         const calculateRemainingDays = ( endDate) => {
@@ -88,7 +89,7 @@ const Dashboard = () => {
         });
     };
     fetchSubscribers();
-  }, []);
+  }, [refreshData]);
 
   // Handle search input change
   const handleSearch = (e) => {
@@ -156,6 +157,7 @@ const Dashboard = () => {
       }
       const response = await fetch(`http://localhost:5174/post/updateSubscriber/${currentSubscriberId}`, {
         method: "PUT",
+        credentials: "include",
         body: formDataToSend,
       });
       if (!response.ok) {
@@ -238,7 +240,8 @@ const Dashboard = () => {
 
       const response = await fetch("http://localhost:5174/post/createSub", {
         method: "POST",
-        body: formDataToSend, // Use formDataToSend instead of JSON.stringify(formData)
+        credentials: "include",
+        body: formDataToSend,
       });
       console.log('Add Sub triggered')
       if (!response.ok) {
@@ -259,6 +262,7 @@ const Dashboard = () => {
       console.error("Error:", error);
       setError("Failed to submit the form. Please try again."); // Set error message
     } finally {
+      setRefreshData(prev => !prev)
       setIsLoading(false); // Set loading state to false
     }
   };
@@ -266,11 +270,11 @@ const Dashboard = () => {
   return (
     <div className="dashboard">
       {/* Add New Subscriber Form */}
-      <div className="form-search-container">
-      <h1>Create Or Update Subscription Form </h1>
-
         <div className="form-btn-container">
-          <div className="form-container">
+            <div>
+                <h1>Create Or Update Subscription Form </h1>
+              </div>
+            <div className="form-container">
             <form onSubmit={handleSubmit}>
               <div className="form-group">
                 <label htmlFor="firstName">First Name</label>
@@ -366,7 +370,6 @@ const Dashboard = () => {
           </button>
             )}
           </div>
-        </div>
       </div>
 
       {/* Subscribers Table */}
